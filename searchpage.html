@@ -1,0 +1,20 @@
+{% include header.html %}
+
+<h1> This is the search page</h1>
+<script>
+
+function submitForm() {
+  var newUrl = window.location.origin + '/searchresults/' + searchbar.value + '/';
+  window.location.replace(newUrl);
+}
+</script>
+     <input id="searchbar" type="text" size="40" name="field_name" placeholder="Search">
+     <button id="searchbutton" name="searchbutton">Search</button>
+<script>
+searchbutton.onclick = submitForm;
+   searchbar.onkeypress = function(ev){
+     if(ev.key == 'Enter'){
+       submitForm()
+     }
+   }
+</script>

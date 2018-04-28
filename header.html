@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/static/main.css" rel="stylesheet">
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/search/">Search</a></li>
+      </ul>
+      <ul class ="logins">
+        {% if login %}
+        <li>{{login.username}}</li>
+        <li><a href="/logout/">Logout</a></li>
+        {% end if %}
+
+        {% if not login %}
+        <li><a href="/login/">Login</a></li>
+        <li><a href="/signup/">Sign Up</a></li>
+        {% end if %}
+      </ul>
+    </nav>
+</header>
+<main>

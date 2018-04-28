@@ -1,0 +1,5 @@
+{% include header.html %}
+{% for item in topics %}
+<a href="/topic/{{item.topicid}}/"><h4>{{item.name}}</h4></a>
+<p> {{item.description}} </p>
+{% end for %}

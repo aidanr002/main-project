@@ -1,0 +1,10 @@
+{% include header.html %}
+<title>{{topic.name}} Page</title>
+<h2>{{topic.name}}</h2>
+<h3>{{topic.description}}</h3>
+<h3>The comments on this post are: </h3>
+<h4> There are no Yes comments</h4>
+{% for comment in commentno %}
+<h4>{{comment.comment}}</h4>
+<p>Comment by: {{comment.username}}, from {{comment.usercountry}}</p>
+{% end for %}
