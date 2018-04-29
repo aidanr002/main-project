@@ -14,7 +14,8 @@
       </ul>
       <ul class ="logins">
         {% if login %}
-        <li>{{login.username}}</li>
+        <li>Welcome {{login.username}}</li>
+        <li><a href="/user/{{login.id}}/">View Profile</a></li>
         <li><a href="/logout/">Logout</a></li>
         {% end if %}
 

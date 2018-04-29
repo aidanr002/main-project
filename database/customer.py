@@ -33,7 +33,7 @@ def get_user(db_file, id):
     """Returns information about a customer (user) from the database."""
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE userid = ?;",(id))
+    cur.execute("SELECT * FROM users WHERE userid = ?;",(id,))
     row = cur.fetchone()
     conn.commit()
     cur.close()

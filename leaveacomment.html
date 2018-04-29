@@ -1,0 +1,22 @@
+{% if login %}
+  <h4>Leave a comment </h4>
+  <form method = 'POST' id = "create-comment">
+      <label>Anonymous?</label>
+      <input type = 'checkbox' placeholder = '' id = 'anonymous' name = 'anonymous' >
+
+      <h4>Stance</h4>
+      <label>Yes</label>
+      <input type = 'radio' value="yes" placeholder = 'Yes' id = 'stance_yes' name= 'stance' required>
+      <label>No</label>
+      <input type = 'radio' value="no" placeholder = 'No' id = 'stance_no' name= 'stance' required>
+
+      <label>Comment</label>
+      <input type = 'text' placeholder = 'Enter comment here...' id = 'entercomment' name = 'comment' required >
+      <input type = 'submit' value="Leave a Comment">
+  </form>
+{% end if %}
+
+{% if not login %}
+  <h4>You have to be logged in to make a comment </h4>
+  <p><a href="/login/">Login</a> or <a href="/signup/">Signup</a></p>
+{% end if %}

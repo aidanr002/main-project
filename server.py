@@ -86,6 +86,25 @@ def topicpage_handler(request, topicid):
         else:
             render (request, "topicpage.html", {'commentyes': commentyes, 'commentno': commentno, 'topic':topic, "login": check_logged_in(request)})
 
+def comment_creator_handler(request, topicid):
+    anonymous = request.get_field('anonymous')
+    if anonymous:
+        user_id = 2
+        user = get_user('./database/users.db', user_id)
+    else:
+        user_id = request.get_secure_cookie('user_id')
+        user = get_user('./database/users.db', user_id.decode("UTF-8"))
+    field = []
+    field.append(topicid)
+    field.append(user.username)
+    field.append(user.country)
+    stance = request.get_field('stance')
+    comment = request.get_field('comment')
+    field.append(stance)
+    field.append(comment)
+    create_comment('./database/comments.db', field)
+    request.redirect("/topic/"+ topicid + "/")
+
 def searchpage_handler (request):
     render (request, "searchpage.html", {"login": check_logged_in(request)})
 
@@ -96,12 +115,22 @@ def searchresult_handler (request, query):
     else:
         render (request, "searchresults.html", {'topics': search_result, "login": check_logged_in(request)})
 
-def profile_handler (request, user_id):
-    user = get_user('./database/users.db', user_id)
-    if user == None:
-        render(request, "pagenotfound.html", {"login": check_logged_in(request)})
+def profile_handler (request, user_page_id):
+    user_page_id = int(user_page_id)
+    user_id = request.get_secure_cookie('user_id')
+    if user_id:
+        user = get_user('./database/users.db', user_id.decode("UTF-8"))
+        user_id = int(user.id)
+        print (user_id, user_page_id)
+        if user_page_id == user_id:
+            if user == None:
+                render(request, "pagenotfound.html", {"login": check_logged_in(request)})
+            else:
+                render (request, "profilepage.html", {'user': user, "login": check_logged_in(request)})
+        else:
+            render(request, "pagenotfound.html", {"login": check_logged_in(request)})
     else:
-        render (request, "profilepage.html", {'user': user, "login": check_logged_in(request)})
+        render(request, "pagenotfound.html", {"login": check_logged_in(request)})
 
 def login_handler(request):
     render(request, "login.html", {"error": "", "login": check_logged_in(request)})
@@ -109,7 +138,6 @@ def login_handler(request):
 def post_login_handler(request):
     user = get_user_by_username('./database/users.db', request.get_field('username'))
     if user:
-        # check if password is correct
         if user.password == request.get_field('password'):
             request.set_secure_cookie('user_id', str(user.id))
             request.redirect("/")
@@ -120,8 +148,8 @@ def post_login_handler(request):
 
 def check_logged_in(request):
     user_id = request.get_secure_cookie('user_id')
-    print(user_id)
     if user_id:
+        print (user_id)
         return get_user('./database/users.db', user_id.decode("UTF-8"))
 
 def logout_handler(request):
@@ -143,23 +171,24 @@ def finished_profile_handler(request):
     print (password, confpass)
     if password != confpass:
         errormessage = "Password does not match"
-        request.redirect('/signup/')
+        render(request, 'createprofile.html',{"error": errormessage, "login": check_logged_in(request)})
+        print ("errormessage")
     else:
         errormessage = ""
+    if confpass == password:
+        for f in profile_fields:
+            field.append(request.get_field(f))
 
-    for f in profile_fields:
-        field.append(request.get_field(f))
-
-    user = create_user('./database/users.db', field)
-    request.set_secure_cookie('user_id', str(user.id))
-    request.redirect('/')
+        user = create_user('./database/users.db', field)
+        request.set_secure_cookie('user_id', str(user.id))
+        request.redirect('/')
 
 server = Server() # Create a server object
 server.register(r'/', index_handler)
 server.register(r'/search/', searchpage_handler)
 server.register(r'/searchresults/(.*)/', searchresult_handler)
 server.register(r'/user/(\d+)/', profile_handler)
-server.register(r'/topic/(\d+)/', topicpage_handler)
+server.register(r'/topic/(\d+)/', topicpage_handler, post = comment_creator_handler)
 server.register(r'/login/', login_handler, post = post_login_handler)
 server.register(r'/signup/', profile_creator_handler, post = finished_profile_handler)
 server.register(r'/logout/', logout_handler)

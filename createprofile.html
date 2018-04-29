@@ -1,12 +1,10 @@
 {% include header.html %}
     <h1 id = 'create-account'> Create an Account </h1>
     {% if error != "" %}
-    <p>{{error}}</p>
+    <h3>{{error}}</h3>
     {% end if %}
     <article class ="full-width">
   <form method = 'POST' id = "create-profile">
-
-      <!-- <input type = 'text' placeholder = 'username' id = 'textField_username' name = 'username'> -->
       <label>Username</label>
       <input type = 'text' placeholder = 'Username' id = 'textfield_uname' name = 'username' required >
 

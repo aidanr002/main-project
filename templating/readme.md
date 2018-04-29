@@ -79,7 +79,7 @@ then
 ```
 {% for key in data %}
  <p>{{ key + ': ' data[key] }}</p>
- {% end for %}
+{% end for %}
 ```
 will render to:
 ```
