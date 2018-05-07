@@ -2,14 +2,50 @@
 <title>{{topic.name}} Page</title>
   <h2>{{topic.name}}</h2>
   <h3>{{topic.description}}</h3>
+  <div class="comment">
+    {% if typecomment == "" %}
+    <h3 id="commentoverallheading">The comments on this post are: </h3>
+    <div class="commentyes">
+      <h4 id="commentyesheading">"Yes" comments</h4>
+      <ul>
+      {% for comment in commentyes %}
+          <li><h4>{{comment.comment}}</h4>
+          <p>Comment by: {{comment.username}}, from {{comment.usercountry}}</p></li>
+      {% end for %}
+    </ul>
+    </div>
+    <div class="commentno">
+      <h4 id="commentnoheading">"No" comments</h4>
+      <ul>
+      {% for comment in commentno %}
+      <li><h4>{{comment.comment}}</h4>
+          <p>Comment by: {{comment.username}}, from {{comment.usercountry}}</p></li>
+      {% end for %}
+      <ul>
+    </div>
+    {% end if %}
+  </div>
+
+  {% if typecomment == "noyes" %}
+  <h3>The comments on this post are: </h3>
+  <h4>There are no "Yes" comments on this topic</h4>
+  {% for comment in commentno %}
+      <h4>{{comment.comment}}</h4>
+      <p>Comment by: {{comment.username}}, from {{comment.usercountry}}</p>
+  {% end for %}
+  {% end if %}
+
+  {% if typecomment == "nono" %}
   <h3>The comments on this post are: </h3>
   {% for comment in commentyes %}
       <h4>{{comment.comment}}</h4>
       <p>Comment by: {{comment.username}}, from {{comment.usercountry}}</p>
   {% end for %}
-  {% for comment in commentno %}
-      <h4>{{comment.comment}}</h4>
-      <p>Comment by: {{comment.username}}, from {{comment.usercountry}}</p>
-  {% end for %}
+  <h4>There are no "No" comments on this topic</h4>
+  {% end if %}
 
+  {% if typecomment == "none" %}
+  <h3>There are no comments on this post.</h3>
+  {% end if %}
 {% include leaveacomment.html %}
+</main>

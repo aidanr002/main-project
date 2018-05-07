@@ -4,7 +4,6 @@ from templating import render
 from database.customer import *
 from database.comments import *
 from database.issues import *
-#from database.issues import *
 
 def index_handler (request):
     populartopic = get_popular_topic('./database/comments.db', './database/topics.db')
@@ -23,7 +22,6 @@ def index_handler (request):
             if i not in topicsused:
                 populartopic1 = get_topic('./database/topics.db', i)
                 topicsused.append(i)
-                print (topicsused)
                 break
 
     if populartopic2 != None:
@@ -33,7 +31,6 @@ def index_handler (request):
             if i not in topicsused:
                 populartopic2 = get_topic('./database/topics.db', i)
                 topicsused.append(i)
-                print (topicsused)
                 break
 
     if populartopic3 != None:
@@ -43,7 +40,6 @@ def index_handler (request):
             if i not in topicsused:
                 populartopic3 = get_topic('./database/topics.db', i)
                 topicsused.append(i)
-                print (topicsused)
                 break
 
     if populartopic4 != None:
@@ -53,7 +49,6 @@ def index_handler (request):
             if i not in topicsused:
                 populartopic4 = get_topic('./database/topics.db', i)
                 topicsused.append(i)
-                print (topicsused)
                 break
 
     if populartopic5 != None:
@@ -63,7 +58,6 @@ def index_handler (request):
             if i not in topicsused:
                 populartopic5 = get_topic('./database/topics.db', i)
                 topicsused.append(i)
-                print (topicsused)
                 break
 
     render (request, "index.html", {'populartopic1': populartopic1, 'populartopic2': populartopic2, 'populartopic3': populartopic3, 'populartopic4': populartopic4, 'populartopic5': populartopic5, "login": check_logged_in(request)})
@@ -72,19 +66,19 @@ def topicpage_handler(request, topicid):
     topic = get_topic('./database/topics.db',topicid)
     commentyes = get_comment('./database/comments.db', topicid, 'yes')
     commentno = get_comment('./database/comments.db', topicid, 'no')
+    typecomment = ""
     if topic == None:
         render(request, "pagenotfound.html", {"login": check_logged_in(request)})
     else:
         if not commentyes:
             if not commentno:
-                render (request, "topicpagenocomment.html", {'topic':topic, "login": check_logged_in(request)})
+                typecomment = "none"
             else:
-                render (request, "topicpagenoyes.html", {'topic': topic, 'commentno': commentno, "login": check_logged_in(request)})
+                typecomment = "noyes"
         if not commentno:
             if commentyes:
-                render (request, "topicpagenono.html", {'topic': topic, 'commentyes': commentyes, "login": check_logged_in(request)})
-        else:
-            render (request, "topicpage.html", {'commentyes': commentyes, 'commentno': commentno, 'topic':topic, "login": check_logged_in(request)})
+                typecomment = "nono"
+        render (request, "topicpage.html", {'typecomment': typecomment, 'commentyes': commentyes, 'commentno': commentno, 'topic':topic, "login": check_logged_in(request)})
 
 def comment_creator_handler(request, topicid):
     anonymous = request.get_field('anonymous')
@@ -121,7 +115,6 @@ def profile_handler (request, user_page_id):
     if user_id:
         user = get_user('./database/users.db', user_id.decode("UTF-8"))
         user_id = int(user.id)
-        print (user_id, user_page_id)
         if user_page_id == user_id:
             if user == None:
                 render(request, "pagenotfound.html", {"login": check_logged_in(request)})
@@ -149,7 +142,6 @@ def post_login_handler(request):
 def check_logged_in(request):
     user_id = request.get_secure_cookie('user_id')
     if user_id:
-        print (user_id)
         return get_user('./database/users.db', user_id.decode("UTF-8"))
 
 def logout_handler(request):
@@ -168,7 +160,6 @@ def finished_profile_handler(request):
 
     password = request.get_field('password')
     confpass = request.get_field('passwordconf')
-    print (password, confpass)
     if password != confpass:
         errormessage = "Password does not match"
         render(request, 'createprofile.html',{"error": errormessage, "login": check_logged_in(request)})

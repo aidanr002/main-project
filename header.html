@@ -9,19 +9,19 @@
   <header>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/search/">Search</a></li>
+        <li><h3><a href="/">Home</a></h3></li>
+        <li><h3><a href="/search/">Search</a></h3></li>
       </ul>
       <ul class ="logins">
         {% if login %}
         <li>Welcome {{login.username}}</li>
-        <li><a href="/user/{{login.id}}/">View Profile</a></li>
-        <li><a href="/logout/">Logout</a></li>
+        <li><h3><a href="/user/{{login.id}}/">View Profile</a></h3></li>
+        <li><h3><a href="/logout/">Logout</a></h3></li>
         {% end if %}
 
         {% if not login %}
-        <li><a href="/login/">Login</a></li>
-        <li><a href="/signup/">Sign Up</a></li>
+        <li><h3><a href="/login/">Login</a></h3></li>
+        <li><h3><a href="/signup/">Sign Up</a></h3></li>
         {% end if %}
       </ul>
     </nav>

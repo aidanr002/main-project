@@ -1,18 +1,158 @@
-ul {
-    display: inline-block;
-    vertical-align: middle;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:300,400');
+
+html{
+  align-self: center;
 }
 
-li {
-    float: left;
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+input[type=submit] {
+  cursor: pointer;
+}
+a, button{
+  cursor: pointer;
+}
+a, a:link {
+  color: #389fd1;
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+  color: #ff7f27;
 }
 
-li a {
-    display: block;
-    padding: 8px;
-    background-color: #dddddd;
+header {
+  background-color: #000000;
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
+h1{
+  color: #000000;
+  font-weight: 300;
+  font-size: 50px;
+  font-family: 'Source Sans Pro';
+}
+
+h2{
+  color: #000000;
+  font-weight: 300;
+  font-size: 30px;
+  font-family: 'Source Sans Pro';
+}
+
+h3{
+  font-weight: 200;
+  font-size: 20px;
+  font-family: 'Source Sans Pro';
+  color: #000000;
+}
+
+h4{
+
+}
+
+article{
+  background-color: RGB(255,255,255);
+}
+main {
+    background-color: RGB(230,230,230);
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px 20px;
+    }
+header>nav>ul{
+  display: inline-block;
+  padding: 0px;
+  list-style: none;
+  color: RGB(198,156,109);
+}
+header>nav>ul>li{
+  display: inline-block;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+nav{
+  text-align: right;
+  width: 60%;
+  margin: 0 auto;
+}
+#create-profile{
+  display: grid;
+  padding: 8px;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  align-items: stretch;
+}
+
+#create-profile label {
+  text-align:right;
+  align-self: center;
+}
+
+#create-profile input, #create-profile textarea {
+  padding: 8px;
+  border: 1px solid #389fd1;
+  border-radius: 2px;
+}
+#create-profile [type="submit"]{
+  grid-column: 2;
+  background: #389fd1;
+  border: none;
+  padding: 12px 0;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+#create-account h1{
+  text-align:center;
+}
+#searchbar{
+  margin: 20px;
+  margin-right: none;
+  height: 30px;
+  width: 500px;
+  font-size: 28px;
+}
+#searchbutton{
+  margin: 20px;
+  margin-left: none;
+  height: 35px;
+  width: 100px;
+  font-size: 20px;
+}
+#commentoverallheading {
+  text-align: left;
+}
+.comment {
+  text-align: center;
+}
+.commentno {
+  display: inline-block;
+  padding-left: 25px;
+  text-align: left;
+  vertical-align: top;
+}
+.commentyes {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+.commentno ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.commentyes ul {
+  list-style: none;
+  padding-left: 0px;
+}
+#commentnoheading {
+  text-align: left
+}
+#commentyesheading {
+  text-align: left;
 }
