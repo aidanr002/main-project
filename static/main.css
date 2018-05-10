@@ -16,17 +16,19 @@ a, button{
   cursor: pointer;
 }
 a, a:link {
-  color: #389fd1;
+  color: RGB(24,54,105);
   text-decoration: none;
 }
 a:active {
   text-decoration: none;
-  color: #ff7f27;
+  color: RGB(24,54,105);
 }
 
 header {
-  background-color: #000000;
+  background-color: #ffffff;
   font-family: 'Source Sans Pro', sans-serif;
+  border-bottom: 5px solid RGB(190,30,45);
+  padding: 10px 0;
 }
 
 h1{
@@ -65,17 +67,18 @@ main {
     }
 header>nav>ul{
   display: inline-block;
-  padding: 0px;
+  vertical-align: middle;
   list-style: none;
-  color: RGB(198,156,109);
+  padding: 0px;
+  color: RGB(190,30,45);
 }
 header>nav>ul>li{
   display: inline-block;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 nav{
-  text-align: right;
+  text-align: center;
   width: 60%;
   margin: 0 auto;
 }
@@ -95,12 +98,12 @@ nav{
 
 #create-profile input, #create-profile textarea {
   padding: 8px;
-  border: 1px solid #389fd1;
+  border: 1px solid RGB(24,54,105);
   border-radius: 2px;
 }
 #create-profile [type="submit"]{
   grid-column: 2;
-  background: #389fd1;
+  background: RGB(190,30,45);
   border: none;
   padding: 12px 0;
   font-size: 18px;
@@ -120,10 +123,10 @@ nav{
 }
 #searchbutton{
   margin: 20px;
-  margin-left: none;
-  height: 35px;
-  width: 100px;
-  font-size: 20px;
+  font-size: 28px;
+  color: #ffffff;
+  background-color: RGB(190,30,45);
+  border-color: RGB(190,30,45);
 }
 #commentoverallheading {
   text-align: left;
@@ -155,4 +158,40 @@ nav{
 }
 #commentyesheading {
   text-align: left;
+}
+#logo {
+  padding-right: 15px;
+  vertical-align: middle;
+}
+#login label {
+  text-align: right;
+  align-self: center;
+}
+#login input, #login textarea {
+  padding: 8px;
+  border: 1px solid RGB(24,54,105);
+  border-radius: 2px;
+}
+#login [type="submit"]{
+  background: RGB(190,30,45);
+  border: none;
+  padding: 10px 5px;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+}
+#searchpageheading {
+  margin-bottom: 0px;
+}
+#indexpageheading {
+  margin-bottom: 0px;
+}
+#indexpageheading2 {
+  margin-top: 0px;
+}
+.homepagerecommendedtopicsheadings {
+  margin-bottom: 0px;
+}
+.homepagerecommendedtopicsdescription {
+  margin-top: 0px;
 }
