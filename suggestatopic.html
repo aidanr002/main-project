@@ -1,0 +1,20 @@
+{% include header.html %}
+{% if login %}
+<title>Suggest a Topic</title>
+    <h1 id = 'suggesttopic'> Suggest a Topic </h1>
+    <article class ="full-width">
+  <form method = 'POST' id = "create-profile">
+      <label>Topic Name</label>
+      <input type = 'text' placeholder = 'Name' id = 'textfield_name' name = 'name' required >
+
+      <label>Description</label>
+      <input type = 'description' placeholder = 'Description' id = 'textfield_description' name= 'description' required >
+
+      <input type = 'submit' value="Suggest Topic">
+  </form>
+{% end if %}
+  {% if not login %}
+    <h2 class = 'genericnomargin'>ERROR:</h2>
+    <h4 class = 'genericnomargin'>You have to be logged in to suggest a topic </h4>
+    <p><a href="/login/">Login</a> or <a href="/signup/">Signup</a></p>
+  {% end if %}

@@ -15,6 +15,34 @@ class Customer(object):
     def __str__(self):
         return "fname: '{}', lname: '{}', email: '{}', country: '{}', bio: '{}', id:'{}', username: '{}', password: '{}'".format(self.fname, self.lname, self.email, self.country, self.bio, self.id, self.username, self.password)
 
+def update_profile(db_file, fieldstoupdate, newfieldinfo, userid):
+    conn = sqlite3.connect(db_file)
+    cur = conn.cursor()
+    cur.execute("UPDATE users SET fname = ? WHERE userid = ?;",(newfieldinfo[0], userid,))
+    conn.commit()
+    cur.execute("UPDATE users SET lname = ? WHERE userid = ?;",(newfieldinfo[1], userid,))
+    conn.commit()
+    cur.execute("UPDATE users SET email = ? WHERE userid = ?;",(newfieldinfo[2], userid,))
+    conn.commit()
+    cur.execute("UPDATE users SET country = ? WHERE userid = ?;",(newfieldinfo[3], userid,))
+    conn.commit()
+    cur.execute("UPDATE users SET bio = ? WHERE userid = ?;",(newfieldinfo[4], userid,))
+    conn.commit()
+    cur.execute("UPDATE users SET username = ? WHERE userid = ?;",(newfieldinfo[5], userid,))
+    conn.commit()
+    cur.execute("UPDATE users SET password = ? WHERE userid = ?;",(newfieldinfo[6], userid,))
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def remove_user(db_file, userid):
+    conn = sqlite3.connect(db_file)
+    cur = conn.cursor()
+    cur.execute("DELETE FROM users WHERE userid = ?;",(userid,))
+    conn.commit()
+    cur.close()
+    conn.close()
+
 def get_user_by_username(db_file, username):
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()

@@ -1,6 +1,26 @@
 {% include header.html %}
 <title>Search Results</title>
+<script>
+
+function submitForm() {
+  var newUrl = window.location.origin + '/searchresults/' + searchbar.value + '/';
+  window.location.replace(newUrl);
+}
+</script>
+     <input id="searchbar" type="text" size="40" name="field_name" placeholder="Search">
+     <button id="searchbutton" name="searchbutton">Search</button>
+<script>
+searchbutton.onclick = submitForm;
+   searchbar.onkeypress = function(ev){
+     if(ev.key == 'Enter'){
+       submitForm()
+     }
+   }
+</script>
 {% for item in topics %}
-<a href="/topic/{{item.topicid}}/"><h4>{{item.name}}</h4></a>
-<p> {{item.description}} </p>
+<div id = 'results'>
+<a href="/topic/{{item.topicid}}/"><h4 id = 'searchresultsitemname'>{{item.name}}</h4></a>
+<p id = "searchresultsitemdescription"> {{item.description}} </p>
+</div>
 {% end for %}
+<h4 id = "suggestatopic">Can't find the topic you are looking for? <a href="/suggestatopic/">Suggest a topic</a></h4>

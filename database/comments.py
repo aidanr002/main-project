@@ -12,11 +12,31 @@ class Comments(object):
 
     def __str__(self):
         return "username: '{}', usercountry: '{}', topicid: '{}', stance: '{}', comment '{}', commentid: '{}'".format(self.username, self.usercountry, self.topicid, self.stance, self.comment, self.commentid)
-
+def remove_comment(db_file, commentid):
+    conn = sqlite3.connect(db_file)
+    cur = conn.cursor()
+    cur.execute("DELETE FROM comments WHERE commentid = ?;",(commentid,))
+    conn.commit()
+    cur.close()
+    conn.close()
 def get_comment(db_file, topicid, stance):
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("SELECT * FROM comments WHERE topicid = ? AND stance = ?;",(topicid, stance))
+    selected_comments = []
+    for row in cur:
+        commentid, topicid, username, usercountry, stance, comment = row
+        acomment = Comments(topicid, username, usercountry, stance, comment, commentid)
+        selected_comments.append(acomment)
+    conn.commit()
+    cur.close()
+    conn.close()
+    return selected_comments
+
+def get_comment_fromusername(db_file, username):
+    conn = sqlite3.connect(db_file)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM comments WHERE username = ?;",(username,))
     selected_comments = []
     for row in cur:
         commentid, topicid, username, usercountry, stance, comment = row

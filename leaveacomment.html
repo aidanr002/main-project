@@ -1,18 +1,22 @@
 {% if login %}
-  <h4>Leave a comment </h4>
+  <h3 id = "leaveacommentheading">Leave a comment </h3>
   <form method = 'POST' id = "create-comment">
-      <label>Anonymous?</label>
-      <input type = 'checkbox' placeholder = '' id = 'anonymous' name = 'anonymous' >
+  <ul class = "leaveacommentfields">
+      <li id = "leaveacommentanonfield"><label>Anonymous?</label>
+      <input type = 'checkbox' placeholder = '' id = 'anonymous' name = 'anonymous' > </li>
 
-      <h4>Stance</h4>
+      <li><h4>Stance:</h4>
       <label>Yes</label>
       <input type = 'radio' value="yes" placeholder = 'Yes' id = 'stance_yes' name= 'stance' required>
       <label>No</label>
-      <input type = 'radio' value="no" placeholder = 'No' id = 'stance_no' name= 'stance' required>
+      <input type = 'radio' value="no" placeholder = 'No' id = 'stance_no' name= 'stance' required></li>
 
-      <label>Comment</label>
-      <input type = 'text' placeholder = 'Enter comment here...' id = 'entercomment' name = 'comment' required >
-      <input type = 'submit' value="Leave a Comment">
+      <li id = "leaveacommentcommentfieldlabel"><label>Comment</label></li>
+  </ul>
+    <ul class = "leaveacommentfields2">
+      <li><input type = 'text' placeholder = 'Enter comment here...' id = 'entercomment' name = 'comment' required ></li>
+      <li><input type = 'submit' id = "leaveacommentsubmitacomment" value="Leave a Comment"></li>
+    </ul>
   </form>
 {% end if %}
 

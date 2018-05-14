@@ -1,0 +1,16 @@
+{% include header.html %}
+<h3>Comments Waiting Approval:</h3>
+{% for comment in pendingcomments %}
+<p>Topic Id: {{comment.topicid}}</p>
+<p>Comment: {{comment.comment}} </p>
+<a href="/approvecomment/{{comment.pendingcommentid}}/">Approve</a>
+<a href="/denycomment/{{comment.pendingcommentid}}/">Deny</a>
+{% end for %}
+
+<h3>Topics Waiting Approval:</h3>
+{% for topic in pendingtopics %}
+<p>Topic Name: {{topic.name}}</p>
+<p>Description: {{topic.description}} </p>
+<a href="/approvetopic/{{topic.pendingtopicid}}/">Approve</a>
+<a href="/denytopic/{{topic.pendingtopicid}}/">Deny</a>
+{% end for %}

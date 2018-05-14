@@ -47,13 +47,16 @@ h2{
 
 h3{
   font-weight: 200;
-  font-size: 20px;
+  font-size: 23px;
   font-family: 'Source Sans Pro';
   color: #000000;
 }
 
 h4{
-
+  font-weight: 200;
+  font-size: 19px;
+  font-family: 'Source Sans Pro';
+  color: #000000;
 }
 
 article{
@@ -128,7 +131,7 @@ nav{
   background-color: RGB(190,30,45);
   border-color: RGB(190,30,45);
 }
-#commentoverallheading {
+.commentoverallheading {
   text-align: left;
 }
 .comment {
@@ -153,11 +156,16 @@ nav{
   list-style: none;
   padding-left: 0px;
 }
-#commentnoheading {
+.commentnoheading {
+  margin: 0px;
   text-align: left
 }
-#commentyesheading {
+.commentyesheading {
+  margin: 0px;
   text-align: left;
+}
+.genericnomargin {
+  margin: 0px;
 }
 #logo {
   padding-right: 15px;
@@ -180,6 +188,12 @@ nav{
   color: #ffffff;
   font-weight: 500;
 }
+.topicpagecommentuserinfo {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+}
 #searchpageheading {
   margin-bottom: 0px;
 }
@@ -191,7 +205,116 @@ nav{
 }
 .homepagerecommendedtopicsheadings {
   margin-bottom: 0px;
+  margin-top: 10px;
 }
 .homepagerecommendedtopicsdescription {
   margin-top: 0px;
+  margin-bottom: 10px;
+}
+.recommendedtopics {
+  border-bottom: 1px solid RGB(190,30,45);
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.profileyourinformationheading {
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+.profileyourinformation {
+  margin: 0px;
+  margin-bottom: 3px;
+}
+#searchresultsitemname {
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+.leaveacommentfields {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+#leaveacommentanonfield {
+  padding-right: 20px;
+}
+.leaveacommentfields li h4{
+  display: inline-block;
+  margin: 0px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.leaveacommentfields label {
+  font-weight: 200;
+  font-size: 19px;
+  font-family: 'Source Sans Pro';
+  color: #000000;
+}
+.leaveacommentfields2 {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+#leaveacommentcommentfieldlabel {
+  padding-bottom: 5px;
+}
+#entercomment {
+  width: 600px;
+  height: 100px;
+  font-weight: 200;
+  font-size: 19px;
+  font-family: 'Source Sans Pro';
+  color: #000000;
+}
+#leaveacommentheading {
+  margin: 0px;
+  padding-top: 40px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid RGB(190,30,45);
+  width: 25%;
+}
+#leaveacommentsubmitacomment {
+  margin-top: 7px;
+  background: RGB(190,30,45);
+  border: none;
+  padding: 10px 5px;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 400;
+}
+#searchresultsitemdescription {
+  margin-top: 0px;
+  margin-left: 20px;
+}
+.underline {
+  border-bottom: 1px solid RGB(190,30,45);
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#results {
+  border-bottom: 1px solid RGB(190,30,45);
+}
+.profileyourcommentsheading {
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 2px;
+}
+.profileyourcommentstopicname {
+  margin: 0px;
+  padding-top: 10px;
+}
+#topicpagetopicname {
+  margin-bottom: 0px;
+}
+#topicpagetopicdescription {
+  margin-top: 0px;
+}
+.topicpagesectionheading {
+  margin: 0px;
+  border-bottom: 1px solid RGB(190,30,45);
+  text-align: center;
+}
+#suggestatopic {
+  text-align: center;
 }

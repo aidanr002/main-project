@@ -1,3 +1,22 @@
 {% include header.html %}
 <title>Search Results</title>
+<script>
+
+function submitForm() {
+  var newUrl = window.location.origin + '/searchresults/' + searchbar.value + '/';
+  window.location.replace(newUrl);
+}
+</script>
+     <input id="searchbar" type="text" size="40" name="field_name" placeholder="Search">
+     <button id="searchbutton" name="searchbutton">Search</button>
+<script>
+searchbutton.onclick = submitForm;
+   searchbar.onkeypress = function(ev){
+     if(ev.key == 'Enter'){
+       submitForm()
+     }
+   }
+</script>
+
 <h1>No Results Found</h1>
+<h4 id = "suggestatopic">Can't find the topic you are looking for? <a href="/suggestatopic/">Suggest a topic</a></h4>

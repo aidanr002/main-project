@@ -2,13 +2,27 @@
 <title>Home Page</title>
 <h1 id= "indexpageheading">Welcome to JustDebate!</h1>
 <h2 id= "indexpageheading2">The most popular topics are: </h2>
-<a href="/topic/{{populartopic1.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic1.name}}</h4></a>
-<p class = "homepagerecommendedtopicsdescription">{{populartopic1.description}}</p>
-<a href="/topic/{{populartopic2.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic2.name}}</h4></a>
-<p class = "homepagerecommendedtopicsdescription">{{populartopic2.description}}</p>
-<a href="/topic/{{populartopic3.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic3.name}}</h4></a>
-<p class = "homepagerecommendedtopicsdescription">{{populartopic3.description}}</p>
-<a href="/topic/{{populartopic4.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic4.name}}</h4></a>
-<p class = "homepagerecommendedtopicsdescription">{{populartopic4.description}}</p>
-<a href="/topic/{{populartopic5.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic5.name}}</h4></a>
-<p class = "homepagerecommendedtopicsdescription">{{populartopic5.description}}</p>
+<div class = "recommendedtopics">
+  <a href="/topic/{{populartopic1.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic1.name}}</h4></a>
+  <p class = "homepagerecommendedtopicsdescription">{{populartopic1.description}}</p>
+</div>
+<div class = "recommendedtopics">
+  <a href="/topic/{{populartopic2.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic2.name}}</h4></a>
+  <p class = "homepagerecommendedtopicsdescription">{{populartopic2.description}}</p>
+</div>
+<div class = "recommendedtopics">
+  <a href="/topic/{{populartopic3.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic3.name}}</h4></a>
+  <p class = "homepagerecommendedtopicsdescription">{{populartopic3.description}}</p>
+</div>
+<div class = "recommendedtopics">
+  <a href="/topic/{{populartopic4.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic4.name}}</h4></a>
+  <p class = "homepagerecommendedtopicsdescription">{{populartopic4.description}}</p>
+</div>
+<div class = "recommendedtopics">
+  <a href="/topic/{{populartopic5.topicid}}/"><h4 class = "homepagerecommendedtopicsheadings">{{populartopic5.name}}</h4></a>
+  <p class = "homepagerecommendedtopicsdescription">{{populartopic5.description}}</p>
+</div>
+<h4 id = "suggestatopic">Can't find the topic you are looking for? <a href="/suggestatopic/">Suggest a topic</a></h4>
+<script>
+window.alert("Terms of Use: \nPlease ensure that all comments or additions to posts on this website are appropriate, thoughtfull and constructive. \nBy posting you agree to the Terms Of Use.");
+</script>
