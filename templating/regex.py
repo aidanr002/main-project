@@ -1,4 +1,4 @@
-regexes = {
+regexes = { #Sets the expressions to look for - commands that are valid
     'include': r'{%\s*(include\s+(\w+\.\w+))\s*%}',
     'if': r'{%\s*if\s+(.+)\s*%}',
     'else': r'{%\s*else\s*%}',

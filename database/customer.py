@@ -1,7 +1,7 @@
 import sqlite3
 import hashlib
 
-class Customer(object):
+class Customer(object): #Sets up constructor for object that will have attributes. This object can be used in server.py. Specific attributes can be pulled from it.
     """Creates user object from database"""
     def __init__(self, fname, lname, email, country, bio, username, password, id= None):
         self.id = id
@@ -12,10 +12,10 @@ class Customer(object):
         self.bio = bio
         self.username = username
         self.password = password
-    def __str__(self):
+    def __str__(self): #Decodes the object so it is printable
         return "fname: '{}', lname: '{}', email: '{}', country: '{}', bio: '{}', id:'{}', username: '{}', password: '{}'".format(self.fname, self.lname, self.email, self.country, self.bio, self.id, self.username, self.password)
 
-def update_profile(db_file, fieldstoupdate, newfieldinfo, userid):
+def update_profile(db_file, fieldstoupdate, newfieldinfo, userid): #Takes in a list of information, opens a connection, substitutes the information with the matching key information. Saves row and closes connection.
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("UPDATE users SET fname = ? WHERE userid = ?;",(newfieldinfo[0], userid,))
@@ -35,7 +35,7 @@ def update_profile(db_file, fieldstoupdate, newfieldinfo, userid):
     cur.close()
     conn.close()
 
-def remove_user(db_file, userid):
+def remove_user(db_file, userid): #Takes in user id, opens a connection to db file, removes the line from the file (line at id) and closes the connection.
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("DELETE FROM users WHERE userid = ?;",(userid,))
@@ -43,7 +43,7 @@ def remove_user(db_file, userid):
     cur.close()
     conn.close()
 
-def get_user_by_username(db_file, username):
+def get_user_by_username(db_file, username):  #Takes in a username, opens a connection, searches the db for matching entries, converts the item to an object and returns this to the calling file. Then closes the connection.
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("SELECT * FROM users WHERE username = ?;",(username,))
@@ -57,7 +57,7 @@ def get_user_by_username(db_file, username):
     user = Customer(fname, lname, email, country, bio, username, password, id)
     return user
 
-def get_user(db_file, id):
+def get_user(db_file, id):  #Takes in a id, opens a connection, searches the db for matching entries, adds the matching results to list, converts the list to an object and returns this to the calling file. Then closes the connection.
     """Returns information about a customer (user) from the database."""
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
@@ -72,7 +72,7 @@ def get_user(db_file, id):
     user = Customer(fname, lname, email, country, bio, username, password, id)
     return user
 
-def create_user(db_file, information):
+def create_user(db_file, information): #Takes in a list of information, opens a connection, creates a new row with that information + an id 1 number larger than the previous id. Saves row and closes connection.
     """Creates a new user using information passed to the function."""
     fname, lname, email, country, bio, username, password = information
     user = Customer(fname, lname, email, country, bio, username, password)

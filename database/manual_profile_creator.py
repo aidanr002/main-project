@@ -1,5 +1,4 @@
-from customer import *
-# Uses code from NCSS to generate profile !!TEMPORARY!! #
+from customer import * #Opens a command line window and prompts and recieves input for each of the required fields. It then parses these to the create user function. The purpose of this to allow the creation of users without using the webform. Also useful for stress testing.
 user = input("Stress test, super stress test or normal entry ")
 if user == "super stress test":
     for i in range(10000):

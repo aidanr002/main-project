@@ -1,7 +1,6 @@
-from issues import *
-# Uses code from NCSS to generate profile !!TEMPORARY!! #
+from issues import * #Opens a command line window and prompts and recieves input for each of the required fields. It then parses these to the create topic function. The purpose of this to allow the creation of topics without using the webform. Also useful for stress testing.
 user = input("Stress test, super stress test or normal entry ")
-if user == "super stress test":
+if user == "super stress test": #Allows a stress test or creating 10000 topics
     for i in range(10000):
         fields = ["Name" + str(i), "Description" + str(i)]
         print (fields)

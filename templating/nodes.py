@@ -92,18 +92,3 @@ class ForNode(Node):
             newString += self.child.evaluate(context)
 
         return newString
-
-## TEST CODE
-# ga = GroupNode()
-#
-# group = GroupNode()
-# group.addChild(PythonNode("item"))
-# group.addChild(PythonNode("item"))
-# group.addChild(PythonNode("item"))
-# forNode = ForNode("item", '["a", "b", "c"]', group)
-#
-# ga.addChild(forNode)
-#
-# ifNode = IfNode("1 == 0", TextNode("Hello!!!"))
-# ga.addChild(ifNode)
-# print(ga.evaluate({}))

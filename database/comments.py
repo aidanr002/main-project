@@ -1,7 +1,7 @@
 import sqlite3
 import hashlib
 
-class Comments(object):
+class Comments(object): #Sets up constructor for object that will have attributes. This object can be used in server.py. Specific attributes can be pulled from it.
     def __init__(self, topicid, username, usercountry, stance, comment, commentid = None):
         self.username = username
         self.usercountry = usercountry
@@ -10,16 +10,18 @@ class Comments(object):
         self.comment = comment
         self.commentid = commentid
 
-    def __str__(self):
+    def __str__(self): #Decodes the object so it is printable
         return "username: '{}', usercountry: '{}', topicid: '{}', stance: '{}', comment '{}', commentid: '{}'".format(self.username, self.usercountry, self.topicid, self.stance, self.comment, self.commentid)
-def remove_comment(db_file, commentid):
+
+def remove_comment(db_file, commentid): #Takes in comment id, opens a connection to db file, removes the line from the file (line at id) and closes the connection.
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("DELETE FROM comments WHERE commentid = ?;",(commentid,))
     conn.commit()
     cur.close()
     conn.close()
-def get_comment(db_file, topicid, stance):
+
+def get_comment(db_file, topicid, stance): #Takes in a id, opens a connection, searches the db for matching entries, adds the matching results to list, converts the list to an object and returns this to the calling file. Then closes the connection.
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("SELECT * FROM comments WHERE topicid = ? AND stance = ?;",(topicid, stance))
@@ -33,7 +35,7 @@ def get_comment(db_file, topicid, stance):
     conn.close()
     return selected_comments
 
-def get_comment_fromusername(db_file, username):
+def get_comment_fromusername(db_file, username):  #Takes in a users username, opens a connection, searches the db for matching entries, adds the matching results to list, converts the list to an object and returns this to the calling file. Then closes the connection.
     conn = sqlite3.connect(db_file)
     cur = conn.cursor()
     cur.execute("SELECT * FROM comments WHERE username = ?;",(username,))
@@ -47,7 +49,7 @@ def get_comment_fromusername(db_file, username):
     conn.close()
     return selected_comments
 
-def create_comment(db_file, information):
+def create_comment(db_file, information): #Takes in a list of information, opens a connection, creates a new row with that information + an id 1 number larger than the previous id. Saves row and closes connection.
     """Creates a new comment using information passed to the function."""
     topicid, username, usercountry, stance, comment = information
     comments = Comments(topicid, username, usercountry, stance, comment)
